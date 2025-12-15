@@ -19,6 +19,8 @@ def matching_parens(s):
     Precondition: s is a string (possibly empty)
     """ 
 
+    assert type(s)==str, "Precondition violation."
+
     # The function matching_parens is actually the trickiest of the two to implement,
     # so we will get you started with some pseudocode. To complete this function,
     # you should read the specification for find_str in the string functions for 
