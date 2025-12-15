@@ -52,6 +52,10 @@ def first_in_parens(s):
     Parameter s: a string to check
     Precondition: s is a string with a matching pair of parens '()'.
     """
+
+    assert type(s)==str, "Precondition violation."
+    assert matching_parens(s)==True, "Precondition violation."
+
     pos1 = introcs.find_str(s,'(',start=0)
     pos2 = introcs.find_str(s,')',start=pos1+1)
     return s[pos1+1:pos2]
