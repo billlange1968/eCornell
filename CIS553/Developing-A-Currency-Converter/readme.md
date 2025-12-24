@@ -1,8 +1,7 @@
 # Course Description
 You will take the concepts you have learned up to this point and use them in a real-world application, creating a program that can convert amounts of currency. You will define and design your own functions, design an interactive script, and test these functions and script in the development of a currency converter. You will also explore how Python can be used to work with web services.
 
-## Module 1
-### Querying a RESTful Service
+## Module 1: Querying a RESTful Service
 
 Querying the Currency Serice
 https://openexchangerates.org/
@@ -115,4 +114,20 @@ XPT	Platinum Ounce	0.00120428		YER	Yemeni Rial	250.300682
 ZAR	South African Rand	13.958699		ZMW	Zambian Kwacha	12.475432
 ZWL	Zimbabwean Dollar	322.000001		 
  
+ ## Module 2: Preparing for the Project
+
+Create three files
+
+* currency.py - A collection of functions
+* testcurrency.py
+* exchangeit.py
+
+> import currency
+> currency.exchange('USD','EUR',2.5)
+
+> python exchangeit.py
+
+
+
+
  
