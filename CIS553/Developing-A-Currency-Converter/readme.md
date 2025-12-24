@@ -127,6 +127,23 @@ Create three files
 
 > python exchangeit.py
 
+## Iterative Development
+
+For your project, you should use the following process:
+
+1. Create the function stubs
+2. Create the test stubs
+3. Add tests for a function
+4. Implement the function
+5. Test until successful
+6. Repeat steps 3-5 for the next function
+
+## Style Guidelines
+* A key style rule to follow when indenting is to indent with spaces, not tabs
+* All functions should be separated by two blank lines
+* Include complete specifications, after the header, for all functions
+* Write your name and the current date in the initial docstring of every file
+* Keep all lines no longer than approximately 80 characters
 
 
 
