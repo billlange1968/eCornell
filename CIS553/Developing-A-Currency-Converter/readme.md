@@ -1,6 +1,10 @@
 # Course Description
 You will take the concepts you have learned up to this point and use them in a real-world application, creating a program that can convert amounts of currency. You will define and design your own functions, design an interactive script, and test these functions and script in the development of a currency converter. You will also explore how Python can be used to work with web services.
 
+introcs module docs
+https://ecpyfac.ecornell.com/docs/introcs/
+
+
 ## Module 1: Querying a RESTful Service
 
 Querying the Currency Serice
