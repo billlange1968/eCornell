@@ -39,7 +39,7 @@ def extract_name(s):
         a=introcs.find_str(s,'@')
         d=introcs.find_str(s,'.')
         result=s[d+1:a]
-    elif 'mompop.net' in s:
+    else
         d=introcs.find_str(s,'.')
         result=s[0:d]
     
