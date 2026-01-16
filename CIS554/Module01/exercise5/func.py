@@ -30,4 +30,23 @@ def valid_format(s):
     Parameter s: the string to check
     Precondition: s is nonempty string with no more than 7 characters
     """
-    pass
+    
+    result = False
+    l=len(s)
+
+    if l==1 and s[0]=='0': # Handle one zero
+        result = True
+    elif l>1 and s[0]=='0': # Handle leading zero
+        result = False
+    elif l<=3 and introcs.isnumeric(s)==True: # Handle 1 through 999
+        result = True
+    elif l==4: # Handle only four characters
+        result = False
+    elif l>4 and s[-4]!=',': # Handle no comma in 4th position when more than 4 chars
+        result = False
+    elif l<=7: # Handle 1,000 to 999,999
+        t=s[0:-4]
+        if introcs.isnumeric(t)==True:
+            result = True
+
+    return result
