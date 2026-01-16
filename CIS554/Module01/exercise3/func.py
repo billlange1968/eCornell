@@ -34,5 +34,19 @@ def extract_name(s):
     Precondition: s is in one of the three address formats described above
     """
     # You must use an if-elif-else statement in this function.
-    pass
+    
+    result =''
 
+    if 'megacorp.com' in s:
+        a=introcs.find_str(s,'@')
+        d=introcs.find_str(s,'.')
+        result=s[d+1:a]
+    elif 'consultant.biz' in s:
+        p1=introcs.find_str(s,'.')
+        p2=introcs.find_str(s,'.',start=p1+1)
+        result=s[p1+1:p2]
+    else: # 'mompop.net'
+        d=introcs.find_str(s,'.')
+        result=s[0:d]
+    
+    return result
