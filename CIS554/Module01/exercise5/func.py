@@ -50,3 +50,4 @@ def valid_format(s):
             result = True
 
     return result
+    
