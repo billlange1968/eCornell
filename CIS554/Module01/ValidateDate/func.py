@@ -43,12 +43,13 @@ def valid_date(date):
     year = int(date[pos2 + 1 :])
     print("Year is " + str(year))  # Watch
 
-    if day < 1 or day > days_in_month(month, year):
-        print("Day out of range")  # Trace
-        return False
     if month < 1 or month > 12:
         print("Month out of range")  # Trace
         return False
+    if day < 1 or day > days_in_month(month, year):
+        print("Day out of range")  # Trace
+        return False
+
     return True
 
 
@@ -114,5 +115,4 @@ def days_in_month(month, year):
 valid_date("2/29/2004")
 valid_date("2/29/2003")
 valid_date("2/2/2000")
-
-
+valid_date("13/10/2017")
