@@ -1,12 +1,12 @@
+"""
 
 
 
 
 
-
-
-
-
+Author: William R. Lange
+Date: 2026-01-16
+"""
 import introcs
 
 
@@ -114,3 +114,5 @@ def days_in_month(month, year):
 valid_date("2/29/2004")
 valid_date("2/29/2003")
 valid_date("2/2/2000")
+
+
