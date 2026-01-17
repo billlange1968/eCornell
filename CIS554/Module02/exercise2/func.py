@@ -36,4 +36,11 @@ def iseurofloat(s):
     Precondition: s is a string
     """
     # You MAY NOT use conditionals anywhere in this function.
-    pass
+    
+    try:
+        pos=introcs.index_str(s,',')
+        d1=int(s[0:pos])
+        d2=int(s[pos+1:])
+        return d2>-1
+    except:
+        return False
