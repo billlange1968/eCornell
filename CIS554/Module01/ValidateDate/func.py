@@ -32,7 +32,7 @@ def valid_date(date):
     # Split up string
     pos1 = introcs.find_str(date, "/")
     print("First / at " + str(pos1))  # Watch
-    pos2 = introcs.find_str(date, "/", pos1 + 3)
+    pos2 = introcs.find_str(date, "/", pos1 + 1)
     print("Second / at " + str(pos2))  # Watch
 
     # Turn month, day, and year into ints
@@ -113,3 +113,4 @@ def days_in_month(month, year):
 
 valid_date("2/29/2004")
 valid_date("2/29/2003")
+valid_date("2/2/2000")
