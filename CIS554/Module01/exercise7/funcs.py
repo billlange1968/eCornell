@@ -75,10 +75,15 @@ def time_to_minutes(s):
     pos1 = introcs.find_str(s,':')
     pos2 = introcs.find_str(s,' ')
     
+    print('pos1: '+str(pos1))
+    print('pos2: '+str(pos2))
+
     # Get hour and convert to int
     hour = s[:pos1]
     hour = int(hour)
     
+    print('Hour: '+str(hour))
+
     # Adjust hour to be correct.
     suff = s[pos2+1:]
     if (suff == 'PM'):
@@ -87,6 +92,11 @@ def time_to_minutes(s):
         hour = 0
     
     # Get min and convert to int
+    mins = s[pos1+1:pos2]
+    mins = int(mins)
+    
+    return hour*60+mins
+
     mins = s[pos1:pos2]
     mins = int(mins)
     
