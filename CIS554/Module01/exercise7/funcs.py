@@ -36,11 +36,17 @@ def time_to_military(s):
     mins = s[pos1+1:pos2]
     suff = s[pos2+1:]
     
+    print('Hours: '+str(hour))
+    print('Minutes: '+str(mins))
+    print('Suff: '+str(suff))
+
     # Adjust hour to be correct.
-    if (suff == 'PM'):
+    if (suff == 'PM') and (hour<12):
         hour += 12
-    elif hour == 12:
+    elif(suff == 'AM') and (hour==12):
         hour = 0
+
+    print('Hours: '+str(hour))
     
     # Add a leading zero if necessary
     if (hour <= 10):
@@ -85,3 +91,4 @@ def time_to_minutes(s):
     mins = int(mins)
     
     return hour*60+mins
+
