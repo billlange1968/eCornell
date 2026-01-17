@@ -105,8 +105,8 @@ def str_to_minutes(s):
     Parameter s: a string potentially representating a time
     Precondition: s is non-empty
     """
-    pass
-
-
-
-
+    
+    try:
+        return time_to_minutes(s)
+    except:
+        return -1
