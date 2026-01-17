@@ -36,9 +36,9 @@ def time_to_military(s):
     mins = s[pos1+1:pos2]
     suff = s[pos2+1:]
     
-    print('Hours: '+str(hour))
-    print('Minutes: '+str(mins))
-    print('Suff: '+str(suff))
+    #print('Hours: '+str(hour))
+    #print('Minutes: '+str(mins))
+    #print('Suff: '+str(suff))
 
     # Adjust hour to be correct.
     if (suff == 'PM') and (hour<12):
@@ -46,7 +46,7 @@ def time_to_military(s):
     elif(suff == 'AM') and (hour==12):
         hour = 0
 
-    print('Hours: '+str(hour))
+    #print('Hours: '+str(hour))
     
     # Add a leading zero if necessary
     if (hour < 10):
@@ -75,30 +75,31 @@ def time_to_minutes(s):
     pos1 = introcs.find_str(s,':')
     pos2 = introcs.find_str(s,' ')
     
-    print('pos1: '+str(pos1))
-    print('pos2: '+str(pos2))
+    #print('pos1: '+str(pos1))
+    #print('pos2: '+str(pos2))
 
     # Get hour and convert to int
     hour = s[:pos1]
     hour = int(hour)
     
-    print('Hour: '+str(hour))
+    #print('Hour: '+str(hour))
 
     # Adjust hour to be correct.
     suff = s[pos2+1:]
-    if (suff == 'PM'):
-        hoar = hour+12
+    if (suff == 'PM') and hour<12:
+        hour = hour+12
     elif (suff == 'AM' and hour == 12):
         hour = 0
-    
+  
     # Get min and convert to int
     mins = s[pos1+1:pos2]
     mins = int(mins)
     
+    #print(s)
+    #print('Hours: '+str(hour))
+    #print('Minutes: '+str(mins))
+    #print('Suff: '+str(suff))
+
     return hour*60+mins
 
-    mins = s[pos1:pos2]
-    mins = int(mins)
-    
-    return hour*60+mins
 
