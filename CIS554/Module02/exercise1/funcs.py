@@ -53,7 +53,37 @@ def time_to_minutes(s):
     Parameter s: string representation of the time
     Precondition: s is a string in 12-format '<hours>:<min> AM/PM'
     """
-    pass
+    
+    # Find the separators
+    pos1 = introcs.find_str(s,':')
+    pos2 = introcs.find_str(s,' ')
+    
+    #print('pos1: '+str(pos1))
+    #print('pos2: '+str(pos2))
+
+    # Get hour and convert to int
+    hour = s[:pos1]
+    hour = int(hour)
+    
+    #print('Hour: '+str(hour))
+
+    # Adjust hour to be correct.
+    suff = s[pos2+1:]
+    if (suff == 'PM') and hour<12:
+        hour = hour+12
+    elif (suff == 'AM' and hour == 12):
+        hour = 0
+  
+    # Get min and convert to int
+    mins = s[pos1+1:pos2]
+    mins = int(mins)
+    
+    #print(s)
+    #print('Hours: '+str(hour))
+    #print('Minutes: '+str(mins))
+    #print('Suff: '+str(suff))
+
+    return hour*60+mins
 
 
 def str_to_minutes(s):
@@ -73,5 +103,7 @@ def str_to_minutes(s):
     Precondition: s is non-empty
     """
     pass
+
+
 
 
