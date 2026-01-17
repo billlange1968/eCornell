@@ -49,7 +49,7 @@ def time_to_military(s):
     print('Hours: '+str(hour))
     
     # Add a leading zero if necessary
-    if (hour <= 10):
+    if (hour < 10):
         hour = '0'+str(hour)
     else:
         hour = str(hour)
