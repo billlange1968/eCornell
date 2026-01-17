@@ -80,5 +80,20 @@ def pigify(s):
     Precondition: s is a nonempty string with only lowercase letters. If s starts with
     'q', then it starts with 'qu'.
     """
-    pass
+    
+    result = ''
+
+    if s[0]=='a' or s[0]=='e' or s[0]=='i' or s[0]=='o' or s[0]=='u':
+        result = s+'hay'
+    elif s[0]=='q':
+        result = s[2:]+'quay'
+    else:
+        i=first_vowel(s)
+        if i>0:
+            result = s[i:] + s[0:i] + 'ay'
+        else:
+            result = s+'ay'
+
+    return result
+
     
