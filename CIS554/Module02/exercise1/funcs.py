@@ -53,7 +53,10 @@ def time_to_minutes(s):
     Parameter s: string representation of the time
     Precondition: s is a string in 12-format '<hours>:<min> AM/PM'
     """
-    
+
+    assert(type(s)==str)
+    assert(valid_format(s))
+
     # Find the separators
     pos1 = introcs.find_str(s,':')
     pos2 = introcs.find_str(s,' ')
