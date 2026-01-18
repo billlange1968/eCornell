@@ -45,11 +45,11 @@ def revrange(a,b):
     Parameter b: the "end" of the range
     Precondition: b is an int >= a
     """
-    pass
+    
+    result = () # empty tuple
 
-0,3
+    for i in range(a,b):
+        result = (i,) + result
 
-0, 1, 2, 3
-
-
+    return result
 
