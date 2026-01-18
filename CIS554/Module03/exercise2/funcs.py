@@ -31,8 +31,17 @@ def clamp(tup,min,max):
     Parameter max: the maximum value for the tuple
     Precondition: max >= min is a number
     """
-    pass
+    a=()
 
+    for t in tup:
+        if t<min:
+            a=a+(min,)
+        elif t>max:
+            a=a+(max,)
+        else:
+            a=a+(t,)
+    
+    return a
 
 def uniques(tup):
     """
