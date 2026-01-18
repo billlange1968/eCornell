@@ -55,4 +55,11 @@ def uniques(tup):
     Parameter tup: the tuple to copy
     Precondition: tup is a tuple
     """
-    pass
+    
+    a=()
+
+    for t in tup:
+        if t not in a:
+            a=a+(t,)
+
+    return len(a)
