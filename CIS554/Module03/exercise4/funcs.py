@@ -24,7 +24,16 @@ def skip(s,n):
     Parameter n: the letter positions to accept
     Precondition: n is an int > 0
     """
-    pass
+
+    result = ''
+
+    for i in range(len(s)):
+        if i % n == 0:
+            result += s[i]
+
+    return result
+
+
 
 
 def fixed_points(tup):
