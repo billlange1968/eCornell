@@ -52,4 +52,11 @@ def fixed_points(tup):
     Parameter tup: the tuple to copy
     Precondition: tup is a tuple of ints
     """
-    pass
+
+    result = ()
+
+    for i in range(len(tup)):
+        if tup[i]==i:
+            result += (i,)
+
+    return result
