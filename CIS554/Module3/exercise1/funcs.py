@@ -43,4 +43,14 @@ def avg(tup):
     Parameter tup: the tuple to check
     Precondition: tup is a tuple of numbers (int or float)
     """
-    pass
+    sum=0.0
+  
+    for t in tup:
+        sum=sum+t
+
+    if len(tup)==0:
+        return 0.0
+    else:
+        return sum/len(tup)
+    
+
