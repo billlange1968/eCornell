@@ -20,7 +20,13 @@ def lesser(tup,value):
     Parameter value:  the value to compare to the tuple
     Precondition:  value is an int
     """
-    pass
+    result = 0
+
+    for t in tup:
+        if t<value:
+            result=result+1
+
+    return result
 
 
 def avg(tup):
