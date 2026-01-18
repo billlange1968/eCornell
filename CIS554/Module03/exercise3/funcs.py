@@ -46,3 +46,10 @@ def revrange(a,b):
     Precondition: b is an int >= a
     """
     pass
+
+0,3
+
+0, 1, 2, 3
+
+
+
