@@ -25,7 +25,16 @@ def skip(s,n):
     Precondition: n is an int > 0
     """
     # You must use a while-loop, not a for-loop
-    pass
+    
+    result = ''
+
+    pos=0
+    while pos<len(s):
+        if pos % n == 0:
+            result=result+s[pos]
+        pos=pos+1
+
+    return result
     
 
 def fixed_points(tup):
