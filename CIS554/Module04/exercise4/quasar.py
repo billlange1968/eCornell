@@ -99,10 +99,6 @@ def get_bet(credits):
     bet=0
     halt=False
 
-    #print('credits: ' + str(credits))
-    #print('bet: ' + str(bet))
-    #print('halt: ' + str(halt))
-
     while halt==False:
 
         try:
@@ -118,8 +114,6 @@ def get_bet(credits):
             print('The bet must be an integer.')
 
     return bet
-
-
 
 def session(bet):
     """
@@ -161,10 +155,10 @@ def session(bet):
     Precondition: bet is an int > 0
     """
 
-    payout=0
+    score=0
 
-    payout=random.randint(1,8)
-    print('Your score is ' + str(payout) + '.')
+    score=random.randint(1,8)
+    print('Your score is ' + str(score) + '.')
 
     halted=False
     while halted == False:
@@ -172,29 +166,30 @@ def session(bet):
         response = prompt('Choose (a) 4-7, (b) 1-8, or (s)top: ',('a','b','s'))
         if response == 'a':
             roll=random.randint(4,7)
-            payout=payout+roll
-            print('Your score is ' + str(payout) + '.')
+            score=score+roll
+            print('Your score is ' + str(score) + '.')
         elif response == 'b':
             roll=random.randint(1,8)
-            payout=payout+roll
-            print('Your score is ' + str(payout) + '.')
+            score=score+roll
+            print('Your score is ' + str(score) + '.')
         elif response == 's':
             halted=True
-    
-    if payout>20:
-        print('You busted.')
-        payout=0
-        halted=True
-    elif payout==20:
-        print('Quasar!')
 
-    if payout>=0:
-        print('You won ' + str(payout) + ' credits.')
-    elif payout<0:
-        print('You lost ' + str(credits) + ' credits.')     
-        payout=-credits
+        if score>20:
+            print('You busted.')
+            halted=True
+        elif score==20:
+            print('Quasar!')
+            halted=True
 
-    return payout
+    p=payout(bet,score)
+
+    if p>=0:
+        print('You won ' + str(p) + ' credits.')
+    elif p<0:
+        print('You lost ' + str(p) + ' credits.')     
+
+    return p
 
 
 def play(credits):
