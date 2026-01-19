@@ -160,7 +160,41 @@ def session(bet):
     Parameter bet: the number of credits bet
     Precondition: bet is an int > 0
     """
-    pass
+
+    payout=0
+
+    payout=random.randint(1,8)
+    print('Your score is ' + str(payout) + '.')
+
+    halted=False
+    while halted == False:
+
+        response = prompt('Choose (a) 4-7, (b) 1-8, or (s)top: ',('a','b','s'))
+        if response == 'a':
+            roll=random.randint(4,7)
+            payout=payout+roll
+            print('Your score is ' + str(payout) + '.')
+        elif response == 'b':
+            roll=random.randint(1,8)
+            payout=payout+roll
+            print('Your score is ' + str(payout) + '.')
+        elif response == 's':
+            halted=True
+    
+    if payout>20:
+        print('You busted.')
+        payout=0
+        halted=True
+    elif payout==20:
+        print('Quasar!')
+
+    if payout>=0:
+        print('You won ' + str(payout) + ' credits.')
+    elif payout<0:
+        print('You lost ' + str(credits) + ' credits.')     
+        payout=-credits
+
+    return payout
 
 
 def play(credits):
