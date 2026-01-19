@@ -64,8 +64,9 @@ def partition(s):
 
     limit = 10
     while pos < len(s):
-        
+
         if limit > 0:
+            print('pos: ' + str(pos))
             limit = limit - 1
         else:
             break   
@@ -78,5 +79,6 @@ def partition(s):
             pos = pos+1
 
     return (left,right)
+
 
 
