@@ -20,7 +20,13 @@ def flips():
     counter = 0
     going = True
 
+    limit = 10
     while going:
+        if limit > 0:
+            limit = limit - 1
+        else:
+            break
+
         flip = random.choice('ht')
         
         if flip == 'h':
