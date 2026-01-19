@@ -95,7 +95,30 @@ def get_bet(credits):
     Parameter credits: the number of credits available to bet
     Precondition: credits is an int > 0
     """
-    pass
+
+    bet=0
+    halt=False
+
+    #print('credits: ' + str(credits))
+    #print('bet: ' + str(bet))
+    #print('halt: ' + str(halt))
+
+    while halt==False:
+
+        try:
+            bet = int(input('Make a bet: '))
+
+            if bet <=0:
+                print('The bet must be a positive integer.')
+            elif bet>credits:
+                print('You do not have enough credits for that bet.')
+            else:
+                halt=True
+        except:
+            print('The bet must be an integer.')
+
+    return bet
+
 
 
 def session(bet):
