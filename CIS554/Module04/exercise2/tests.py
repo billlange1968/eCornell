@@ -66,5 +66,7 @@ def test_partition():
 # Uncomment these test procedures when ready
 if __name__ == '__main__':
     test_flips()
-    #test_partition()
+    test_partition()
     print('Module funcs passed all tests.')
+
+    
