@@ -22,6 +22,7 @@ def flips():
 
     limit = 10
     while going:
+        print('going: ' + str(going))
         if limit > 0:
             limit = limit - 1
         else:
