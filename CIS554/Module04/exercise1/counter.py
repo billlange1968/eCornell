@@ -7,6 +7,7 @@ Author: William R. Lange
 Date: 2026-01-19
 """
 
+
 def count_inputs():
     """
     Returns the number of times the user chose to continue.
@@ -30,7 +31,20 @@ def count_inputs():
         # Get the input from the user
         # Respond with error message if input is bad
         # Update counter if input is 'y'
-    pass
+
+    loop = True
+    result = 0
+
+    while loop==True
+        r=input('Keep going [y/n]? ')
+        if r=='y':
+            result=result+1
+        elif r=='n':
+            loop=False
+        else:
+            print('Answer unclear. Use 'y' or 'n'.')
+
+    return result
 
 # Script code to test the function
 # DO NOT MODIFY BELOW THIS LINE
