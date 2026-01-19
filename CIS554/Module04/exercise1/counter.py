@@ -35,14 +35,14 @@ def count_inputs():
     loop = True
     result = 0
 
-    while loop==True
+    while loop==True:
         r=input('Keep going [y/n]? ')
         if r=='y':
             result=result+1
         elif r=='n':
             loop=False
         else:
-            print('Answer unclear. Use 'y' or 'n'.')
+            print("Answer unclear. Use 'y' or 'n'.")
 
     return result
 
