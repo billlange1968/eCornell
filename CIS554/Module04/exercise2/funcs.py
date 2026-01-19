@@ -62,23 +62,23 @@ def partition(s):
     right = ''
     pos = 0
 
-    limit = 10
+    #limit = 10
     while pos < len(s):
 
-        if limit > 0:
-            print('pos: ' + str(pos))
-            limit = limit - 1
-        else:
-            break   
+        #if limit > 0:
+        #    print('pos: ' + str(pos))
+        #    limit = limit - 1
+        #else:
+        #    break   
 
         letter = s[pos]
         if letter in 'aeiou':
             left = left+letter
+            pos=pos+1
         else:
             right = right+letter
             pos = pos+1
 
     return (left,right)
-
 
 
