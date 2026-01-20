@@ -187,7 +187,7 @@ def session(bet):
     if p>=0:
         print('You won ' + str(p) + ' credits.')
     elif p<0:
-        print('You lost ' + str(p) + ' credits.')     
+        print('You lost ' + str(-p) + ' credits.')     
 
     return p
 
@@ -220,7 +220,28 @@ def play(credits):
     Parameter credits: the number of credits available to bet
     Precondition: credits is an int > 0
     """
-    pass
+    
+    print('You have ' + str(credits) + ' credits.')
+
+    halted=False 
+    while halted==False:
+        bet=get_bet(credits)
+        payout=session(bet)
+        credits=credits+payout
+        
+        print('You have ' + str(credits) + ' credits.')
+        
+        if credits<=0:
+            halted=True
+        else:
+            result=prompt('Do you want to (c)ontinue or (p)ayout? ',('c','p'))
+            if result=='p':
+                halted=True
+
+    if credits>0:
+        print('You leave with '+str(credits)+' credits.')
+    elif credits==0:
+        print('You went broke.')
 
 
 # Script Code
