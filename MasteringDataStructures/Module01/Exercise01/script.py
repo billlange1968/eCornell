@@ -12,5 +12,7 @@ import funcs
 green=introcs.RGB(0,255,0)
 print(green)
 # Step 2: Create a 50% transparent red RGB object, assign it to variable red, and print it
+red=introcs.RGB(255,0,0,128)
+print(red)
 # Step 3: Call the function blend on red/green, assign it to variable brown, and print it
 # Step 4: Call the function blendUnder on green/red, and then print variable green
