@@ -15,4 +15,8 @@ print(green)
 red=introcs.RGB(255,0,0,128)
 print(red)
 # Step 3: Call the function blend on red/green, assign it to variable brown, and print it
+brown=funcs.blend(red,green)
+print(brown)
 # Step 4: Call the function blendUnder on green/red, and then print variable green
+funcs.blendUnder(green,red)
+print(green)
