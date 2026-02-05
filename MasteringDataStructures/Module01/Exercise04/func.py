@@ -26,4 +26,11 @@ def replace_first(tup,a,b):
     Parameter b: The value to replace with
     Precondition: b is an int
     """
-    pass
+    
+    if a in tup:
+      p1 = tup.index(a)
+      new_tup = tup[:p1] + (b,) + tup[p1+1:]
+    else:
+      new_tup = tup
+      
+    return new_tup
