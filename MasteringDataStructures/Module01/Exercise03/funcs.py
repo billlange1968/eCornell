@@ -47,4 +47,16 @@ def isnetid(s):
     Parameter s: the string to check
     Precondition: s is a string
     """
-    pass
+  
+    result = True
+
+    alpha=s.rstrip('0123456789')
+    numeric=s.lstrip('abcdefghijklmnopqrstuvwxyz')
+    
+    if len(alpha)<=0 or not alpha.isalpha():
+      result = False
+    
+    if len(numeric)<=0 or not numeric.isnumeric():
+      result = False
+
+    return result
