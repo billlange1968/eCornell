@@ -24,7 +24,10 @@ def first_in_parens(s):
     Parameter s: a string to check
     Precondition: s is a string with a matching pair of parens '()'.
     """
-    pass
+    p1=s.find('(')
+    p2=s.find(')',p1+1)
+    result = s[p1+1:p2]
+    return result
 
 
 def isnetid(s):
