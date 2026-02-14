@@ -24,7 +24,9 @@ def put_in(alist,value):
     Parameter value: The value to append
     Precondition: value has the same type as the elements of a
     """
-    pass
+    alist.append(value)
+    alist.sort()
+    
 
 
 def rotate(alist):
