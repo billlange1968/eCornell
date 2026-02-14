@@ -68,4 +68,8 @@ def fold_right(f,seq,value):
     Parameter value: the initial starting value
     Precondition: value has the same type as the return type of f
     """
-    pass
+    a = value
+    for i in seq[::-1]:
+        a=f(i,a)
+
+    return a
