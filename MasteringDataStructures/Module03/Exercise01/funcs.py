@@ -26,7 +26,7 @@ def put_in(alist,value):
     """
     alist.append(value)
     alist.sort()
-    
+
 
 
 def rotate(alist):
@@ -44,4 +44,8 @@ def rotate(alist):
     Precondition: a non-empty list
     """
     # Hint: Read the method description for insert
-    pass
+    v = alist.pop()
+    alist.insert(0,v)
+
+
+
