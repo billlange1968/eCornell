@@ -59,4 +59,11 @@ def removeall(alist,n):
     Parameter n: the number to remove
     Precondition: n is a number
     """
-    pass
+    l = alist.copy()
+    size = len(l)
+
+    for i in range(size):
+        if l[i]==n:
+            del l[i]
+    
+    return l
