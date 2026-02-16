@@ -60,10 +60,11 @@ def removeall(alist,n):
     Precondition: n is a number
     """
     l = alist.copy()
+   
     size = len(l)
 
-    for i in range(size):
+    for i in range(size-1,-1,-1):
         if l[i]==n:
-            del l[i]
+            del l[i]  
     
     return l
