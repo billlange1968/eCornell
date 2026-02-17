@@ -58,4 +58,15 @@ def crossout(table,row,col):
     Parameter col: the colummn to remove
     Precondition: col is an index (int) for a column of table
     """
-    pass
+    numrows = len(table)
+    numcols = len(table[0])
+    result = []
+    for r in range(numrows):
+        if r != row:
+            t = []
+            for c in range(numcols):
+                if c != col:
+                    t.append(table[r][c])
+            result.append(t)          
+    return result
+
