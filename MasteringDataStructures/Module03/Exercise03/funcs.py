@@ -31,8 +31,13 @@ def clamp(alist,min,max):
     Parameter max: the maximum value for the list
     Precondition: max >= min is a number
     """
-    pass
+    size = len(alist)
 
+    for i in range(size):
+        if alist[i] < min:
+            alist[i] = min
+        elif alist[i] > max:
+            alist[i] = max 
 
 def removeall(alist,n):
     """
@@ -51,4 +56,8 @@ def removeall(alist,n):
     Parameter n: the number to remove
     Precondition: n is a number
     """
-    pass
+    size = len(alist)
+
+    for i in range(size-1,-1,-1):
+        if alist[i]==n:
+            del alist[i]  
