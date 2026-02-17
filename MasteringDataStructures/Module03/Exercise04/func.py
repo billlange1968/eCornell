@@ -20,4 +20,12 @@ def avg(*args):   # The parameter is MISSING.  Add it back.
     Parameter args: the function arguments
     Precondition: args are all numbers (int or float)
     """
-    pass
+    number = len(args)
+    
+    if number == 0:
+        return 0
+
+    sum = 0
+    for i in range(number):
+        sum=sum+args[i]
+    return sum/number
