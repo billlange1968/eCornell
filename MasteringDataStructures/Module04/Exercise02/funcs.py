@@ -30,7 +30,17 @@ def crossout(table,row,col):
     Parameter col: the colummn to remove
     Precondition: col is an index (int) for a column of table
     """
-    pass
+    numrows = len(table)
+    numcols = len(table[0])
+
+    for r in range(numrows):
+        for c in range(numcols):
+            if c == col:
+                del table[r][c]
+                
+    for r in range(numrows):
+        if r == row:
+            del table[r]
 
 
 def place_sums(table):
@@ -58,3 +68,4 @@ def place_sums(table):
     numbers, and (4) each row is the same length.
     """
     pass
+
