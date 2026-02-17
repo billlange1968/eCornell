@@ -24,7 +24,16 @@ def row_sums(table):
         (2) each row contains only numbers, and 
         (3) each row is the same length.
     """
-    pass
+    numrows = len(table)
+    numcols = len(table[0])
+    result = []
+    for r in range(numrows):
+        sum = 0
+        for c in range(numcols):
+            value = table[r][c]
+            sum = sum + value
+        result.append(sum)
+    return result
 
 
 def crossout(table,row,col):
