@@ -6,7 +6,7 @@ Date: 2026-02-16
 """
 
 
-def avg( ):   # The parameter is MISSING.  Add it back. 
+def avg(*args):   # The parameter is MISSING.  Add it back. 
     """
     Returns average of all of arguments (passed via tuple expansion)
     
