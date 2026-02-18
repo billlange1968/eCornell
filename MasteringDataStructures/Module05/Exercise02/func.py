@@ -110,4 +110,15 @@ def reports_above_temp(weather,temp):
     Parameter temp: the temperature in celsius
     Precondition: temp is a float
     """
-    pass
+    c=0
+    for key in weather:
+        if 'temperature' in weather[key]:
+            t = weather[key]['temperature']
+            units = t['units']
+            value = t['value']
+            if units =='F':
+                value = to_celsius(value)
+            if value > temp:
+                c=c+1
+    return c
+        
