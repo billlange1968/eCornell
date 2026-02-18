@@ -42,6 +42,7 @@ def letter_grades(adict):
             lgrade = 'F'
         adict[k]=lgrade
 
+
 def drop_below(adict,limit):
     """
     Deletes all students in the dictionary with grades below limit.
@@ -62,5 +63,10 @@ def drop_below(adict,limit):
     Precondition: limit is a number (int or float)
     """
     # Hint: Create a list of netids to drop, and THEN drop them
-    pass
+    d=[]
+    for k in adict:
+        if adict[k]<limit:
+            d.append(k)
 
+    for netid in d:
+        del adict[netid]
