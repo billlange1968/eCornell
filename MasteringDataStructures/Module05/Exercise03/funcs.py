@@ -27,8 +27,20 @@ def letter_grades(adict):
     Parameter adict: the dictionary of grades
     Precondition: adict is dictionary mapping strings to ints
     """
-    pass
-
+    for k in adict:
+        ngrade = adict[k]
+        lgrade = ''
+        if ngrade >= 90:
+            lgrade = 'A'
+        elif ngrade >= 80:
+            lgrade = 'B'
+        elif ngrade >= 70:
+            lgrade = 'C'
+        elif ngrade >= 60:
+            lgrade = 'D'
+        else:
+            lgrade = 'F'
+        adict[k]=lgrade
 
 def drop_below(adict,limit):
     """
@@ -51,3 +63,4 @@ def drop_below(adict,limit):
     """
     # Hint: Create a list of netids to drop, and THEN drop them
     pass
+
