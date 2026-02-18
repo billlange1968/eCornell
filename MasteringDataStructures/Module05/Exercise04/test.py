@@ -37,7 +37,7 @@ def test_circ_area():
         pass
     
     # Add a test with additional arguments
-    result = func.circ_area(radius=3,foo=20)
+    circ_area(radius=3,foo=20,bar=10)       
     introcs.assert_floats_equal(28.27433,result)
     
 
