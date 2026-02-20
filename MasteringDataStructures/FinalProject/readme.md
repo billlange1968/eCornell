@@ -11,3 +11,15 @@ You will add the code for the True option at the second step.
 
 This function is fairly straightforward as you do not need to add or remove pixels from the image; you just change attributes. Therefore, it is a good warm-up for the rest of the project.  
 
+# Add Grayscale Conversion
+Implement the function mono for the case sepia is False. You do not need to add an if-statement yet. You can delay that until the next step. Read the specification for mono for how to implement this function.  
+
+When you are done, you should try it out on the various test images. For example, the command  
+
+```
+python pictool.py mono images/Walker.png Walker2.png
+```
+should perform the following conversion:  
+
+(sample images)
+
