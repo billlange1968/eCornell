@@ -37,3 +37,10 @@ python pictool.py mono images/Goldhill.png Goldhill3.png --sepia=True
 
 Important: Because you can put anything you want in the sepia option (say --sepia=blue), we recommend that you enforce the precondition for sepia in the function with assert statements.
 
+# Overview of Image Flipping
+
+Image flipping is slightly different than changing colors. In image flipping you need to swap the pixel values between two locations. For example, in a horizontal flip, the top-left pixel becomes the top-right pixel and vice versa. While you could swap each of the red, green, blue, and alpha values individually, there is no problem with swapping the entire RGB objects and leaving the contents of the objects unchanged.  
+
+The function flip is responsible for flipping an image, though it has two different versions depending on whether vertical is True or False. You will approach this function in two steps. First you will implement it assuming vertical is False.  
+
+You will add the code for the True option at the second step.
