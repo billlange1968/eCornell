@@ -22,5 +22,9 @@ python pictool.py mono images/Walker.png Walker2.png
 ```
 should perform the following conversion:  
 
-(sample images)
+<img width="360" height="288" alt="Goldhill" src="https://github.com/user-attachments/assets/c6911a07-ad7e-4a36-9ec6-5e8ffc66ceb6" />
+
+<img width="360" height="288" alt="Goldhill2" src="https://github.com/user-attachments/assets/b714caf5-b029-4fee-93fc-2c9d7fe22ed4" />
+
+
 
