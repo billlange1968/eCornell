@@ -18,7 +18,7 @@ Implement the function mono for the case sepia is False. You do not need to add 
 When you are done, you should try it out on the various test images. For example, the command  
 
 ```
-python pictool.py mono images/Walker.png Walker2.png
+python pictool.py mono images/Goldhill.png Goldhill2.png
 ```
 should perform the following conversion:  
 
