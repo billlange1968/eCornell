@@ -169,7 +169,17 @@ def flip(image,vertical=False):
     """
     # We recommend enforcing the precondition for vertical
     # Change this to return True when the function is implemented
-    return False
+
+    assert vertical==True or vertical==False
+
+    # Get the image size
+    height = len(image)
+    width  = len(image[0])
+        for row in range(height):
+            for col in range(width):
+                pass
+
+    return True
 
 
 def transpose(image):
