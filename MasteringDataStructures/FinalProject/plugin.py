@@ -126,7 +126,21 @@ def mono(image, sepia=False):
     """
     # We recommend enforcing the precondition for sepia
     # Change this to return True when the function is implemented
-    return False
+    
+    # Get the image size
+    height = len(image)
+    width  = len(image[0])
+    
+    for row in range(height):
+        for col in range(width):
+            pixel = image[row][col]
+            brightness = 0.3 * pixel.red + 0.6 * pixel.green + 0.1 * pixel.blue
+            pixel.red = int(brightness)
+            pixel.green = int(brightness)
+            pixel.blue = int(brightness)
+    
+    return True
+
 
 
 def flip(image,vertical=False):
