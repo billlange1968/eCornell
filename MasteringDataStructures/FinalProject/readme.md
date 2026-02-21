@@ -75,3 +75,25 @@ should perform the following conversion:
 
 Important: Because you can put anything you want in the vertical option (say --vertical=blue), we recommend that you enforce the precondition for vertical in the function with assert statements.
 
+# Overview of Image Rotation
+
+Rotation is harder than the other two forms of process. That is because rotation changes the dimensions of the image. An image that is 10 pixels by 20 pixels becomes 20 pixels by 10 pixels. The problem is similar to computing the transpose of a matrix that was shown in the module Programming with Nested Lists.  
+
+This is easy if we want to make a copy of an image. We just create an accumulator for the new image and add the pixels one at a time, just like any 2D table. However, all of our functions want us to modify the table argument. The best way to do this is to cheat.  
+
+First, we create a rotated copy using an accumulator variable. Then, we erase all of the rows of the original image using the clear list method. While this will erase all the image contents, the top-level list object is still there. We then append all of the rows of the copy to the old (empty) image, filling it back up. If you think about how these objects are represented in memory, you can see that this will successfully modify the image argument.
+To rotate images, you will implement two functions: transpose and rotate. The function transpose will do all the hard work, while rotate will use this function as a helper.
+
+# Add Image Transposition
+
+The function transpose does not have any parameters other than image. Implement this function as specified. It is very similar to the function of the same name shown in the videos for the module Programming with Nested Lists. Download this function from the Canvas page if you need a hint.  
+
+This function will look like it rotates the image, but it’s slightly different. It actually rotates and flips. You should test it out on the less symmetrical images. For example, the command  
+
+```
+python pictool.py transpose images/Japan.png Japan2.png
+```
+
+should perform the following conversion:  
+
+
