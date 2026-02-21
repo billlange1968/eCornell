@@ -97,3 +97,14 @@ python pictool.py transpose images/Japan.png Japan2.png
 should perform the following conversion:  
 
 
+# Add Rotation to the Left
+
+Read the specification for the function rotate. This function has an optional parameter right, which is False by default (meaning the image will rotate to the left). Implement this function assuming that right is False. You do not need to add an if-statement yet. You can delay that until the next step.  
+
+As you can see from the specification, rotation is easy now that you have implemented both flip and transpose. To rotate to the left, transpose first and then flip vertically. For example, the command  
+
+```
+python pictool.py rotate images/Japan.png Japan2.png
+```
+should perform the following conversion:  
+
