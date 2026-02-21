@@ -254,9 +254,13 @@ def rotate(image,right=False):
    
     assert right==True or right==False
 
-    transpose(image)
-    flip(image,vertical=True)
-
+    if right==False:
+        transpose(image)
+        flip(image,vertical=True)
+    elif right==True:
+        flip(image,vertical=True)  
+        transpose(image)
+ 
     return True
 
 # ADVANCED OPTIONAL FUNCTIONS
