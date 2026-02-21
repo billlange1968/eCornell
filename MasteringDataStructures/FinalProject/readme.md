@@ -44,3 +44,19 @@ Image flipping is slightly different than changing colors. In image flipping you
 The function flip is responsible for flipping an image, though it has two different versions depending on whether vertical is True or False. You will approach this function in two steps. First you will implement it assuming vertical is False.  
 
 You will add the code for the True option at the second step.
+
+# Add Horizontal Flipping
+
+Implement the function flip for the case vertical is False. You do not need to add an if-statement yet. You can delay that until the next step. Read the specification for flip for how to implement this function.  
+
+When you are done, you should try it out on the various test images. For example, the command
+
+```
+python pictool.py flip images/Goldhill.png Goldhill4.png
+```
+should perform the following conversion:  
+
+<img width="360" height="288" alt="Goldhill" src="https://github.com/user-attachments/assets/512d7c5c-bbe8-4ce0-9dfe-23706c7e8e33" />
+<img width="360" height="288" alt="Goldhill4" src="https://github.com/user-attachments/assets/916c39ec-7dea-4949-94be-1fb709bc5144" />
+
+Important: It is very easy to get this function "off-by-one". That is why we recommend testing it on debug.py first. This image is small enough that you can follow any print statements that you add for debugging.
