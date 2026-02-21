@@ -175,9 +175,9 @@ def flip(image,vertical=False):
     # Get the image size
     height = len(image)
     width  = len(image[0])
-        for row in range(height):
-            for col in range(width):
-                pass
+
+    for row in range(height):
+        image[row] = image[row][::-1]
 
     return True
 
