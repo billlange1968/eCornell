@@ -60,3 +60,18 @@ should perform the following conversion:
 <img width="360" height="288" alt="Goldhill4" src="https://github.com/user-attachments/assets/916c39ec-7dea-4949-94be-1fb709bc5144" />
 
 Important: It is very easy to get this function "off-by-one". That is why we recommend testing it on debug.py first. This image is small enough that you can follow any print statements that you add for debugging.
+
+# Add Vertical Flipping
+
+Extend your implementation of the function flip to include the case vertical is True. Use an if-statement to make sure that you do not break horizontal flipping. Your function should flip horizontally when vertical is False and vertically when it is True. 
+
+To test out vertical flipping, you will need to execute pictool.py with the vertical option, adding --vertical=True to the end of the command line. For example, executing the command  
+
+```
+python pictool.py flip images/Goldhill.png Goldhill5.png --vertical=True
+```
+should perform the following conversion:  
+
+
+Important: Because you can put anything you want in the vertical option (say --vertical=blue), we recommend that you enforce the precondition for vertical in the function with assert statements.
+
