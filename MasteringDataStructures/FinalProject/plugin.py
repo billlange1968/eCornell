@@ -251,8 +251,13 @@ def rotate(image,right=False):
     """
     # We recommend enforcing the precondition for right
     # Change this to return True when the function is implemented
-    return False
+   
+    assert right==True or right==False
 
+    transpose(image)
+    flip(image,vertical=True)
+
+    return True
 
 # ADVANCED OPTIONAL FUNCTIONS
 def vignette(image):
