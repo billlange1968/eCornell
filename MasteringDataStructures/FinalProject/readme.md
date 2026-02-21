@@ -108,3 +108,20 @@ python pictool.py rotate images/Japan.png Japan2.png
 ```
 should perform the following conversion:  
 
+
+# Add Rotation to the Right
+
+Extend your implementation of the function rotate to include the case right is True. Use an if-statement to make sure that you do not break left rotation. Your function should rotate left when right is False and right when it is True. 
+
+To test out right rotation, you will need to execute pictool.py with the right option, adding --right=True to the end of the command line. For example, executing the command  
+
+```
+python pictool.py rotate images/Japan.png Japan2.png --right=True
+```
+should perform the following conversion:  
+
+
+Important: Because you can put anything you want in the right option (say --right=blue), we recommend that you enforce the precondition for right in the function with assert statements.
+
+
+
