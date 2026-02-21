@@ -212,8 +212,25 @@ def transpose(image):
     Precondition: image is a 2d table of RGB objects
     """
     # Change this to return True when the function is implemented
-    return False
 
+    height = len(image)
+    width  = len(image[0])
+
+    # 1. Build a transposed copy: new size is width x height
+    transposed = []
+    for col in range(width):
+        new_row = []
+        for row in range(height):
+            new_row.append(image[row][col])  # swap row/col
+        transposed.append(new_row)
+
+    # 2. Clear original list
+    image.clear()
+
+    # 3. Replace the contents of the original image *in place*
+    image[:] = transposed   # same object, new rows
+
+    return True
 
 def rotate(image,right=False):
     """
