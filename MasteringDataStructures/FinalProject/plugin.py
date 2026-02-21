@@ -172,13 +172,25 @@ def flip(image,vertical=False):
 
     assert vertical==True or vertical==False
 
-    # Get the image size
-    height = len(image)
-    width  = len(image[0])
+    if vertical==False:    
+        # Get the image size
+        height = len(image)
+        width  = len(image[0])
+    
+        for row in range(height):
+            image[row] = image[row][::-1]
 
-    for row in range(height):
-        image[row] = image[row][::-1]
-
+    elif vertical==True:
+        
+        height = len(image)
+        width  = len(image[0])
+        
+        for row in range(height // 2):
+            mirror_row = height - 1 - row
+            
+            # Swap entire rows
+            image[row], image[mirror_row] = image[mirror_row], image[row]
+           
     return True
 
 
