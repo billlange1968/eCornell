@@ -40,4 +40,12 @@ def write_numbers(filepath,n):
     Precondition: n is an int > 0.
     """
     # HINT: You can only write strings to a file, so convert the numbers first
-    pass            # Implement me
+    file = open(filepath,'w')
+
+    for num in range(0,n):
+        s = str(num)
+        if num<(n-1):
+            s=s+'\n'
+        file.write(s)
+
+    file.close()
