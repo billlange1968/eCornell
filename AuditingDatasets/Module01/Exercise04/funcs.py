@@ -21,7 +21,16 @@ def read_json(filename):
     Precondition: filename is a string, referring to a file that exists, and that file 
     is a valid JSON file
     """
-    pass                    # Implement this function
+
+    file = open(filename)
+
+    text = file.read()
+
+    data = json.loads(text)
+
+    file.close()
+
+    return data
 
 
 def write_json(data,filename):
