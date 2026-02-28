@@ -16,8 +16,13 @@ def count_lines(filepath):
     Precondition: filepath is a string with the FULL PATH to a text file
     """
     # HINT: Remember, you can use a file in a for-loop
-    pass            # Implement me
+    line_count=0
+    file = open(filepath)
+    for line in file:
+        line_count=line_count+1
+    file.close()
 
+    return line_count
 
 def write_numbers(filepath,n):
     """
@@ -36,5 +41,3 @@ def write_numbers(filepath,n):
     """
     # HINT: You can only write strings to a file, so convert the numbers first
     pass            # Implement me
-
-
