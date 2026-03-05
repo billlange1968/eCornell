@@ -16,6 +16,9 @@ Date: 2026-03-05
 import csv
 import json
 
+import dateutil.parser
+import datetime
+import pytz
 
 def read_csv(filename):
     """
@@ -30,7 +33,18 @@ def read_csv(filename):
     Precondition: filename is a string, referring to a file that exists, and that file 
     is a valid CSV file
     """
-    pass                    # Implement this function
+
+    result = []
+
+    file = open(filename)
+    wrapper = csv.reader(file)
+ 
+    for row in wrapper:
+        result.append(row)
+
+    file.close()
+
+    return result
 
 
 def write_csv(data,filename):
@@ -95,8 +109,35 @@ def str_to_time(timestamp,tzsource=None):
     """
     # HINT: Use the code from the previous exercise and add time zone handling.
     # Use localize if tzsource is a string; otherwise replace the time zone if not None
-    pass
 
+    try:
+        dt = dateutil.parser.parse(timestamp)
+    except:
+        return None
+    
+    if tzsource == None:
+        return dt
+
+    if dt.tzinfo != None:
+        return dt
+
+    # The value for tzsource can be None, a string, or a datetime object.    
+    
+    # tzsource == None is already handled.
+
+    # Handle tzsource as string
+    if isinstance(tzsource,str):
+        tz = pytz.timezone(tzsource)
+        ndt = tz.localize(dt)
+        return ndt
+
+    # Handle tzsource as datetime
+    if isinstance(tzsource,datetime.datetime):
+        ndt = dt.replace(tzinfo=tzsource.tzinfo)
+        return ndt
+
+    # If we get here, something went amiss
+    return None
 
 def daytime(time,daycycle):
     """
@@ -138,7 +179,45 @@ def daytime(time,daycycle):
     """
     # HINT: Use the code from the previous exercise to get sunset AND sunrise
     # Add a timezone to time if one is missing (the one from the daycycle)
-    pass
+  
+    year_str = time.strftime("%Y")
+    mmdd_str = time.strftime("%m-%d")
+
+    try:
+        days = daycycle[year_str]
+    except:
+        return None
+    
+    if days==None:
+        return None
+
+    try:
+        daycycle_tz = daycycle['timezone']
+    except:
+        return None
+
+    cycle=days[mmdd_str]
+
+    sunrise=cycle['sunrise']    
+    sunrise_str = time.strftime("%Y-%m-%d") + "T" + sunrise
+    sunrise_dtz = str_to_time(sunrise_str,daycycle_tz)
+    
+    sunset=cycle['sunset']    
+    sunset_str = time.strftime("%Y-%m-%d") + "T" + sunset
+    sunset_dtz = str_to_time(sunset_str,daycycle_tz)
+
+    t_tz = time.tzinfo
+
+    if t_tz == None:
+        tz = pytz.timezone(daycycle_tz)
+        time = tz.localize(time)       
+
+    if time <= sunrise_dtz:
+        return False
+    elif sunset_dtz <= time:
+        return False
+    else:  
+        return True
 
 
 def get_for_id(id,table):
@@ -158,5 +237,8 @@ def get_for_id(id,table):
     Parameter table: The 2-dimensional table of data
     Precondition: table is a non-empty 2-dimension list of strings
     """
-    pass                    # Implement this function
 
+    for row in table:
+        if row[0] == id:
+            return row
+    return None
