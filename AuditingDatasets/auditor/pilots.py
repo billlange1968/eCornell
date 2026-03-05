@@ -298,6 +298,18 @@ def get_minimums(cert, area, instructed, vfr, daytime, minimums):
     # Find the best values for each column of the row
     # HINT: remember to use get_best_value to find best value in list of matches
  
+    print()
+    print(str(cert))
+    print(str(area))
+    print(str(instructed))
+    print(str(vfr))
+    print(str(daytime))
+    print(str(minimums))
+    print()
+
+    #pilots.get_minimums(1,'Pattern',True,False,True,minimums) returned None,
+    #but should have returned [500.0, 0.75, 30.0, 20.0]
+
     table = []
 
     for row in minimums: 
@@ -314,45 +326,39 @@ def get_minimums(cert, area, instructed, vfr, daytime, minimums):
         t_crosswind = row[7]
 
         # Check category
-        if t_category == "Student" and cert >= PILOT_STUDENT:
+        if t_category == 'Student' and cert >= PILOT_STUDENT:
             match.append(t_category)
-        elif t_category == "Certified" and cert >= PILOT_CERTIFIED:
+        elif t_category == 'Certified' and cert >= PILOT_CERTIFIED:
             match.append(t_category)
-        elif t_category == "50 Hours" and cert >= PILOT_50_HOURS:
+        elif t_category == '50 Hours' and cert == PILOT_50_HOURS:
             match.append(t_category)
-        elif t_category == "Dual" and instructed==True and (cert == PILOT_INVALID or cert == PILOT_NOVICE):
+        elif t_category == 'Dual' and instructed==True and (cert == PILOT_INVALID or cert == PILOT_NOVICE):
             match.append(t_category)
         else:
             continue
 
         # Check conditions
-        if vfr == True and t_conditions == "VMC":
+        if vfr == True and t_conditions == 'VMC':
             match.append(vfr)
-        elif vfr == False and t_conditions == "IMC":
+        elif vfr == False and t_conditions == 'IMC':
             match.append(t_conditions)
         else:
             continue
 
         # Check Area
-        if t_area == "Any":
+        if t_area == area:
             match.append(area)
-        elif t_area == "Pattern" and area == "Pattern":
+        elif t_area == 'Local' and (area == 'Pattern' or area == 'Practice Area'):
             match.append(area)
-        elif t_area == "Local" and area == "Pattern":
-            match.append(area)
-        elif t_area == "Practice Area" and area == "Practice Area":
-            match.append(area)
-        elif t_area == "Local" and area == "Practice Area":
-            match.append(area)
-        elif t_area == "Cross Country" and area == "Cross Country":
-            match.append(area)
+        elif t_area == 'Any':
+            match.append(area)           
         else:
             continue
 
         # Check time
-        if daytime == True and t_time == "Day":
+        if daytime == True and t_time == 'Day':
             match.append(t_time)   
-        elif daytime == False and t_time == "Night":
+        elif daytime == False and t_time == 'Night':
             match.append(t_time)
         else:
             continue   
@@ -372,8 +378,8 @@ def get_minimums(cert, area, instructed, vfr, daytime, minimums):
     else:
         r_ceiling = get_best_value(table, 0, maximum=False)
         r_visibility = get_best_value(table, 1, maximum=False)
-        r_wind = get_best_value(table, 2, maximum=True)
-        r_crosswind = get_best_value(table, 3, maximum=True)
+        r_wind = get_best_value(table, 2)
+        r_crosswind = get_best_value(table, 3)
         result = [r_ceiling, r_visibility, r_wind, r_crosswind]
         return result
     
