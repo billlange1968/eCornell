@@ -298,18 +298,6 @@ def get_minimums(cert, area, instructed, vfr, daytime, minimums):
     # Find the best values for each column of the row
     # HINT: remember to use get_best_value to find best value in list of matches
  
-    print()
-    print(str(cert))
-    print(str(area))
-    print(str(instructed))
-    print(str(vfr))
-    print(str(daytime))
-    print(str(minimums))
-    print()
-
-    #pilots.get_minimums(1,'Pattern',True,False,True,minimums) returned None,
-    #but should have returned [500.0, 0.75, 30.0, 20.0]
-
     table = []
 
     for row in minimums: 
@@ -332,7 +320,7 @@ def get_minimums(cert, area, instructed, vfr, daytime, minimums):
             match.append(t_category)
         elif t_category == '50 Hours' and cert == PILOT_50_HOURS:
             match.append(t_category)
-        elif t_category == 'Dual' and instructed==True and (cert == PILOT_INVALID or cert == PILOT_NOVICE):
+        elif t_category == 'Dual' and instructed==True:
             match.append(t_category)
         else:
             continue
@@ -363,7 +351,7 @@ def get_minimums(cert, area, instructed, vfr, daytime, minimums):
         else:
             continue   
 
-        # If we have four matches, add the numerical data
+        # If we get here, add the numerical data
         match.append(t_ceiling)
         match.append(t_visibility)
         match.append(t_wind)
