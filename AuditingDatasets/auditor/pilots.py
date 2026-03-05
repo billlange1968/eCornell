@@ -196,7 +196,19 @@ def get_best_value(data, index, maximum=True):
     
     """
     # Find the best values for each column of the row
-    pass
+
+    values = []
+
+    for row in data:
+        values.append(float(row[index]))
+
+    max_value = max(values)
+    min_value = min(values)
+
+    if maximum==True:
+        return max_value
+    else:
+        return min_value
 
 
 def get_minimums(cert, area, instructed, vfr, daytime, minimums):
@@ -285,4 +297,14 @@ def get_minimums(cert, area, instructed, vfr, daytime, minimums):
     # Find all rows that can apply to this student
     # Find the best values for each column of the row
     # HINT: remember to use get_best_value to find best value in list of matches
-    pass
+ 
+    print("GET MINIMUMS")
+
+    print(cert)
+    print(area)
+    print(instructed)
+    print(vfr)
+    print(daytime)
+    print(minimums)
+
+
