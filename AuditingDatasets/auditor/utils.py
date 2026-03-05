@@ -63,7 +63,11 @@ def write_csv(data,filename):
     Precondition: filename is a string representing a path to a file with extension
     .csv or .CSV.  The file may or may not exist.
     """
-    pass                    # Implement this function
+    file = open(filename,'w')
+    wrapper = csv.writer(file)
+    for row in data:
+        wrapper.writerow(row)
+    file.close()
 
 
 def read_json(filename):
@@ -78,7 +82,16 @@ def read_json(filename):
     Precondition: filename is a string, referring to a file that exists, and that file 
     is a valid JSON file
     """
-    pass                    # Implement this function
+
+    file = open(filename)
+
+    text = file.read()
+
+    data = json.loads(text)
+
+    file.close()
+
+    return data
 
 
 def str_to_time(timestamp,tzsource=None):
@@ -242,3 +255,4 @@ def get_for_id(id,table):
         if row[0] == id:
             return row
     return None
+
