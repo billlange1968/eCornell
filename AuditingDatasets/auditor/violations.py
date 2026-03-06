@@ -216,8 +216,28 @@ def bad_ceiling(ceiling,minimum):
     Parameter minimum: The minimum allowed ceiling (in feet)
     Precondition: minimum is a float or int
     """
-    pass                    # Implement this function
 
+    if isinstance(ceiling, str) and ceiling=='clear':
+        return False
+    elif isinstance(ceiling, str) and ceiling=='unavailable':
+        return True      
+    elif isinstance(ceiling,list):
+
+        result = False
+
+        for measurement in ceiling:
+        
+            t_type = measurement['type']
+            t_height = measurement['height']
+            t_units = measurement['units']
+
+            if t_type == 'a few' or t_type == 'scattered':
+                pass
+            else:
+                if minimum > t_height:
+                    result = True
+        
+        return result 
 
 def get_weather_report(takeoff,weather):
     """
