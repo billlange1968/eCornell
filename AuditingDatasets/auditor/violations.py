@@ -134,7 +134,44 @@ def bad_winds(winds,maxwind,maxcross):
     Parameter maxcross: The maximum allowable crosswind speed (in knots)
     Precondition: maxcross is a float or int
     """
-    pass                    # Implement this function
+
+    if isinstance(winds, str) and winds=='calm':
+        return False
+    elif isinstance(winds, str) and winds=='unavailable':
+        return True
+    elif isinstance(winds,dict):
+        t_units = winds['units']
+        t_speed = winds['speed']
+        if t_units == 'MPS':
+            t_speed=t_speed*1.94384
+
+        if 'crosswind' in winds:
+            t_crosswind = winds['crosswind'] # optional
+            if t_units == 'MPS':
+                t_crosswind=t_crosswind*1.94384
+
+        if 'gusts' in winds:
+            t_gusts = winds['gusts'] # optional
+            if t_units == 'MPS':
+                t_gusts=t_gusts*1.94384
+            if t_gusts >= t_speed:
+                if t_gusts > maxwind:
+                    return True
+            
+        if t_speed > maxwind:
+            return True
+
+        try: # crosswind is optional and might not exist
+            if t_crosswind > maxcross:
+                return True
+        except:
+            pass
+
+        return False
+
+    else:
+        return False
+
 
 
 def bad_ceiling(ceiling,minimum):
@@ -386,4 +423,3 @@ def list_weather_violations(directory):
         # Get the weather conditions
         # Check for a violation and add to result if so
     pass
-
