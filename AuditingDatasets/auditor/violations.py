@@ -71,8 +71,26 @@ def bad_visibility(visibility,minimum):
     Parameter minimum: The minimum allowed visibility (in statute miles)
     Precondition: minimum is a float or int
     """
-    pass                    # Implement this function
-
+    
+    if isinstance(visibility, str) and visibility=='unavailable':
+        return True
+    elif isinstance(visibility, dict):
+        t_prevailing = visibility['prevailing']
+        t_units = visibility['units']
+        if t_units == 'FT':
+            t_prevailing=t_prevailing/5280
+        if 'minimum' in visibility:
+            t_minimum = visibility['minimum']
+            if t_units == 'FT':
+                t_minimum=t_minimum/5280
+            if minimum <= t_minimum:
+                return False
+            else:
+                return True
+        elif minimum <= t_prevailing:
+            return False
+        else:
+            return True
 
 def bad_winds(winds,maxwind,maxcross):
     """
@@ -368,3 +386,4 @@ def list_weather_violations(directory):
         # Get the weather conditions
         # Check for a violation and add to result if so
     pass
+
