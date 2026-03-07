@@ -35,6 +35,8 @@ import utils
 import pilots
 import os.path
 
+import datetime
+
 
 # WEATHER FUNCTIONS
 def bad_visibility(visibility,minimum):
@@ -171,8 +173,6 @@ def bad_winds(winds,maxwind,maxcross):
 
     else:
         return False
-
-
 
 def bad_ceiling(ceiling,minimum):
     """
@@ -319,8 +319,24 @@ def get_weather_report(takeoff,weather):
     
     # Search for time in dictionary
     # As fall back, find the closest time before takeoff
-    pass
+  
+    result = None
 
+    takeoff_iso_str = takeoff.isoformat()
+
+    if takeoff_iso_str in weather:          # If key exists,
+        result = weather[takeoff_iso_str]   # return report for key.
+    else:
+        min_dt = min(utils.str_to_time(report) for report in weather) # Prime the pump
+        for report in weather:
+            dt = utils.str_to_time(report)    
+            if dt < utils.str_to_time(takeoff_iso_str) and dt > min_dt:
+                min_dt=dt
+        report_iso_str = min_dt.isoformat()
+        if report_iso_str in weather:
+            result = weather[report_iso_str]        
+        
+    return result
 
 def get_weather_violation(weather,minimums):
     """
