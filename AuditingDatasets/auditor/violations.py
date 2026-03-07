@@ -396,7 +396,76 @@ def get_weather_violation(weather,minimums):
     Parameter minimums: The safety minimums for ceiling, visibility, wind, and crosswind
     Precondition: minimums is a list of four floats
     """
-    pass                    # Implement this function
+
+    #print('weather: ' + str(weather))
+
+    if str(weather) == 'None':
+        return 'Unknown'
+
+    #print('minimums: ' + str(minimums))
+
+    min_ceiling = minimums[0]
+    min_visibility = minimums[1]
+    max_windspeed = minimums[2]
+    max_crosswind = minimums[3]
+
+    #print('min_ceiling: ' + str(min_ceiling))
+    #print('min_visibility: ' + str(min_visibility))
+    #print('max_windspeed: ' + str(max_windspeed))
+    #print('max_crosswind: ' + str(max_crosswind))
+
+    visibility = None
+    winds = None
+    sky = None
+
+    if 'visibility' in weather:
+        visibility = weather['visibility']
+    
+    if 'wind' in weather:    
+        winds = weather['wind']
+    
+    if 'sky' in weather:      
+        sky = weather['sky']
+
+    #print('visibility: ' + str(visibility))
+    #print('winds: ' + str(winds))
+    #print('sky: ' + str(sky))    
+
+    v_vis = None
+    v_winds = None
+    v_sky = None
+
+    if visibility != None:
+        v_vis = bad_visibility(visibility,min_visibility)
+
+    if winds != None:
+        v_winds = bad_winds(winds,max_windspeed,max_crosswind)
+    
+    if sky != None:
+        v_sky = bad_ceiling(sky,min_ceiling)
+
+    #print('v_vis: ' + str(v_vis))
+    #print('v_winds: ' + str(v_winds))
+    #print('v_sky: ' + str(v_sky))   
+
+    result = ''
+
+    if v_vis == True:
+        result = 'Visibility'
+    
+    if v_winds == True:
+        if result == '':
+            result = 'Winds'
+        else:
+            result = 'Weather'
+    
+    if v_sky == True:
+        if result == '':
+            result = 'Ceiling'
+        else:
+            result = 'Weather'
+
+    return result
 
 
 # FILES TO AUDIT
