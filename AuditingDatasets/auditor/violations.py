@@ -544,8 +544,11 @@ def list_weather_violations(directory):
     lessons_csv  = utils.read_csv(os.path.join(directory, LESSONS))
 
     #STUDENT,AIRPLANE,INSTRUCTOR,TAKEOFF,LANDING,FILED,AREA
-    next(lessons_csv) # skip the header row.
-    for lesson in lessons_csv:
+    #next(lessons_csv) # skip the header row.
+    #for lesson in lessons_csv:
+    for i, lesson in enumerate(lessons_csv):
+        if i==0:
+            continue
         #print(str(lesson))
         student = lesson[0]
         airplane = lesson[1]
