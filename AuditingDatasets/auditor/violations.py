@@ -527,4 +527,44 @@ def list_weather_violations(directory):
         # Get the pilot minimums
         # Get the weather conditions
         # Check for a violation and add to result if so
-    pass
+
+    result = []
+
+    #print('directory: ' + str(directory))
+
+    # Sunrise and sunset
+    daycycle_json = utils.read_json(os.path.join(directory, DAYCYCLE))
+    # Hourly weather observations
+    weather_json  = utils.read_json(os.path.join(directory, WEATHER))
+    # The list of insurance-mandated minimums
+    minimums_csv = utils.read_csv(os.path.join(directory, MINIMUMS))
+    # The list of all registered students in the flight school
+    students_csv = utils.read_csv(os.path.join(directory, STUDENTS))
+    # The list of all take-offs (and landings)
+    lessons_csv  = utils.read_csv(os.path.join(directory, LESSONS))
+
+    #STUDENT,AIRPLANE,INSTRUCTOR,TAKEOFF,LANDING,FILED,AREA
+    next(lessons_csv) # skip the header row.
+    for lesson in lessons_csv:
+        #print(str(lesson))
+        student = lesson[0]
+        airplane = lesson[1]
+        instructor = lesson[2]
+        takeoff = lesson[3]
+        landing = lesson[4]
+        filed = lesson[5]
+        area = lesson[6]
+
+        print('student: ' + str(student))
+        print('airplane: ' + str(airplane))
+        print('instructor: ' + str(instructor))
+        print('takeoff: ' + str(takeoff))
+        print('landing: ' + str(landing))
+        print('filed: ' + str(filed))
+        print('area: ' + str(area))
+
+        cert = pilots.get_certification(takeoff,student)
+
+        print('cert: ' + str(cert))
+
+    return result
