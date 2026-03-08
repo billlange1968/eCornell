@@ -403,22 +403,13 @@ def get_weather_violation(weather,minimums):
     Precondition: minimums is a list of four floats
     """
 
-    #print('weather: ' + str(weather))
-
     if str(weather) == 'None':
         return 'Unknown'
-
-    #print('minimums: ' + str(minimums))
 
     min_ceiling = minimums[0]
     min_visibility = minimums[1]
     max_windspeed = minimums[2]
     max_crosswind = minimums[3]
-
-    #print('min_ceiling: ' + str(min_ceiling))
-    #print('min_visibility: ' + str(min_visibility))
-    #print('max_windspeed: ' + str(max_windspeed))
-    #print('max_crosswind: ' + str(max_crosswind))
 
     visibility = None
     winds = None
@@ -433,10 +424,6 @@ def get_weather_violation(weather,minimums):
     if 'sky' in weather:      
         sky = weather['sky']
 
-    #print('visibility: ' + str(visibility))
-    #print('winds: ' + str(winds))
-    #print('sky: ' + str(sky))    
-
     v_vis = None
     v_winds = None
     v_sky = None
@@ -449,10 +436,6 @@ def get_weather_violation(weather,minimums):
     
     if sky != None:
         v_sky = bad_ceiling(sky,min_ceiling)
-
-    #print('v_vis: ' + str(v_vis))
-    #print('v_winds: ' + str(v_winds))
-    #print('v_sky: ' + str(v_sky))   
 
     result = ''
 
@@ -526,21 +509,21 @@ def list_weather_violations(directory):
     'weather.json', 'minimums.csv', 'students.csv', and 'lessons.csv'
     """
     # Load in all of the files
-    
+    daycycle_json = utils.read_json(os.path.join(directory, DAYCYCLE))
+    weather_json  = utils.read_json(os.path.join(directory, WEATHER))
+    minimums_csv = utils.read_csv(os.path.join(directory, MINIMUMS))
+    students_csv = utils.read_csv(os.path.join(directory, STUDENTS))
+    lessons_csv  = utils.read_csv(os.path.join(directory, LESSONS))
+
+    result = []
+    count = 0
+
     # For each of the lessons
         # Get the takeoff time
         # Get the pilot credentials
         # Get the pilot minimums
         # Get the weather conditions
         # Check for a violation and add to result if so
-
-    result = []
-
-    daycycle_json = utils.read_json(os.path.join(directory, DAYCYCLE))
-    weather_json  = utils.read_json(os.path.join(directory, WEATHER))
-    minimums_csv = utils.read_csv(os.path.join(directory, MINIMUMS))
-    students_csv = utils.read_csv(os.path.join(directory, STUDENTS))
-    lessons_csv  = utils.read_csv(os.path.join(directory, LESSONS))
 
     for i, lesson in enumerate(lessons_csv):
         if i==0:
@@ -564,7 +547,7 @@ def list_weather_violations(directory):
         # Get the pilot credentials
         cert = pilots.get_certification(dt_takeoff,student)
         
-        # Prepare parameters
+        # Prepare some parameters
 
         instructed = False
         if instructor != '':
@@ -586,7 +569,8 @@ def list_weather_violations(directory):
 
         # Check for a violation and add to result if so 
         violation = get_weather_violation(weather_report,minimums)      
-
-        print('violations: ' + str(violation))
+        if violation != '':
+            new_row = [student_id, airplane, instructor, takeoff, landing, filed, area, violation]
+            result.append(new_row)
 
     return result
