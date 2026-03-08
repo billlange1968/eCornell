@@ -320,6 +320,12 @@ def get_weather_report(takeoff,weather):
     # Search for time in dictionary
     # As fall back, find the closest time before takeoff
   
+    #print('takeoff ' + str(takeoff))
+    #print('takeoff type' + str(type(takeoff)))
+
+    #print('weather ' + str(weather))
+    #print('weather type' + str(type(weather)))
+
     result = None
 
     takeoff_iso_str = takeoff.isoformat()
@@ -530,26 +536,16 @@ def list_weather_violations(directory):
 
     result = []
 
-    #print('directory: ' + str(directory))
-
-    # Sunrise and sunset
     daycycle_json = utils.read_json(os.path.join(directory, DAYCYCLE))
-    # Hourly weather observations
     weather_json  = utils.read_json(os.path.join(directory, WEATHER))
-    # The list of insurance-mandated minimums
     minimums_csv = utils.read_csv(os.path.join(directory, MINIMUMS))
-    # The list of all registered students in the flight school
     students_csv = utils.read_csv(os.path.join(directory, STUDENTS))
-    # The list of all take-offs (and landings)
     lessons_csv  = utils.read_csv(os.path.join(directory, LESSONS))
-
-    #STUDENT,AIRPLANE,INSTRUCTOR,TAKEOFF,LANDING,FILED,AREA
-    #next(lessons_csv) # skip the header row.
 
     for i, lesson in enumerate(lessons_csv):
         if i==0:
             continue
-        print(str(lesson))
+
         student_id = lesson[0]
         airplane = lesson[1]
         instructor = lesson[2]
@@ -558,30 +554,39 @@ def list_weather_violations(directory):
         filed = lesson[5]
         area = lesson[6]
 
-        print('student_id: ' + str(student_id))
-        print('airplane: ' + str(airplane))
-        print('instructor: ' + str(instructor))
-        print('takeoff: ' + str(takeoff))
-        print('landing: ' + str(landing))
-        print('filed: ' + str(filed))
-        print('area: ' + str(area))
-
-        #Recall that a student is a 10-element list of strings.  The first three elements are
-        #the student's identifier, last name, and first name.  The remaining elements are all
-        #timestamps indicating the following in order: time joining the school, time of first 
-        #solo, time of private license, time of 50 hours certification, time of instrument 
-        #rating, time of advanced endorsement, and time of multiengine endorsement.
-
-        st = None
+        student = None
+        dt_takeoff = utils.str_to_time(takeoff)
         for row in students_csv:
-            if row[0]==student:
-                st = row
-                print('st: ' + str(st))              
+            if row[0]==student_id:
+                student = row         
                 break
 
-        cert = pilots.get_certification(takeoff,st)
+        # Get the pilot credentials
+        cert = pilots.get_certification(dt_takeoff,student)
+        
+        # Prepare parameters
 
-        print('cert: ' + str(cert))
+        instructed = False
+        if instructor != '':
+            instructed = True   
 
+        vfr=False
+        if filed=='VFR': 
+            vfr = True
+
+        # Returns true if the time takes place during the day.
+        daytime = False
+        daytime = utils.daytime(dt_takeoff,daycycle_json)
+    
+        # Get the pilot minimums
+        minimums = pilots.get_minimums(cert, area, instructed, vfr, daytime, minimums_csv)
+        
+        # Get the weather conditions
+        weather_report = get_weather_report(dt_takeoff,weather_json)
+
+        # Check for a violation and add to result if so 
+        violation = get_weather_violation(weather_report,minimums)      
+
+        print('violations: ' + str(violation))
 
     return result
