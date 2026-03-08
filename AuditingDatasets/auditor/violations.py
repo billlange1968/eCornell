@@ -549,7 +549,7 @@ def list_weather_violations(directory):
     for i, lesson in enumerate(lessons_csv):
         if i==0:
             continue
-        #print(str(lesson))
+        print(str(lesson))
         student = lesson[0]
         airplane = lesson[1]
         instructor = lesson[2]
@@ -566,8 +566,19 @@ def list_weather_violations(directory):
         print('filed: ' + str(filed))
         print('area: ' + str(area))
 
+        #Recall that a student is a 10-element list of strings.  The first three elements are
+        #the student's identifier, last name, and first name.  The remaining elements are all
+        #timestamps indicating the following in order: time joining the school, time of first 
+        #solo, time of private license, time of 50 hours certification, time of instrument 
+        #rating, time of advanced endorsement, and time of multiengine endorsement.
+
+        st = students_csv[student]
+
+        print('st: ' + str(st))
+
         cert = pilots.get_certification(takeoff,student)
 
         print('cert: ' + str(cert))
+
 
     return result
