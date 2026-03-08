@@ -54,8 +54,19 @@ def discover_violations(directory,output):
     Parameter output: The CSV file to store the results
     Precondition: output is None or a string that is a valid file name
     """
-    pass                    # Implement this function
+   
+    result = violations.list_weather_violations(directory)
 
+    new_row = ['STUDENT','AIRPLANE','INSTRUCTOR','TAKEOFF','LANDING','FILED','AREA','REASON']
+    result.insert(0,new_row)
+
+    result =  utils.write_csv(result,output)
+
+    count = len(result)
+    if count == 0:
+        print('No violations found.')
+    else:
+        print(f'{count} violations found.')  
 
 def execute(args):
     """
@@ -78,4 +89,5 @@ def execute(args):
     Precondition: args is a list of strings
     """
     pass                    # Implement this function
+
 
