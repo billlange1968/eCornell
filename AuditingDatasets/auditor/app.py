@@ -90,6 +90,24 @@ def execute(args):
     Parameter args: The command line arguments for the application (minus the application name)
     Precondition: args is a list of strings
     """
-    pass                    # Implement this function
+    
+    count = len(args)
 
+    # Quit if wrong number of arguments
+
+    if count < 1 or count > 2:
+        print('Usage: python auditor dataset [output.csv]')
+    elif count == 1 and args[0] == '--test':
+        tests.test_all()
+    elif count == 1: 
+        discover_violations(args[0],None)
+    elif count == 2 and args[0] == '--test':
+        print('Usage: python auditor dataset [output.csv]')
+    elif count == 2 and args[1] == '--test':
+        print('Usage: python auditor dataset [output.csv]')
+    elif count == 2:
+        discover_violations(args[0],args[1]) 
+    else: 
+        print('Usage: python auditor dataset [output.csv]')
+    
 
