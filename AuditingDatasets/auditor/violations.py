@@ -545,12 +545,12 @@ def list_weather_violations(directory):
 
     #STUDENT,AIRPLANE,INSTRUCTOR,TAKEOFF,LANDING,FILED,AREA
     #next(lessons_csv) # skip the header row.
-    #for lesson in lessons_csv:
+
     for i, lesson in enumerate(lessons_csv):
         if i==0:
             continue
         print(str(lesson))
-        student = lesson[0]
+        student_id = lesson[0]
         airplane = lesson[1]
         instructor = lesson[2]
         takeoff = lesson[3]
@@ -558,7 +558,7 @@ def list_weather_violations(directory):
         filed = lesson[5]
         area = lesson[6]
 
-        print('student: ' + str(student))
+        print('student_id: ' + str(student_id))
         print('airplane: ' + str(airplane))
         print('instructor: ' + str(instructor))
         print('takeoff: ' + str(takeoff))
@@ -572,11 +572,14 @@ def list_weather_violations(directory):
         #solo, time of private license, time of 50 hours certification, time of instrument 
         #rating, time of advanced endorsement, and time of multiengine endorsement.
 
-        st = students_csv[student]
+        st = None
+        for row in students_csv:
+            if row[0]==student:
+                st = row
+                print('st: ' + str(st))              
+                break
 
-        print('st: ' + str(st))
-
-        cert = pilots.get_certification(takeoff,student)
+        cert = pilots.get_certification(takeoff,st)
 
         print('cert: ' + str(cert))
 
