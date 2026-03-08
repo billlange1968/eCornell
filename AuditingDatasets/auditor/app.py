@@ -57,16 +57,18 @@ def discover_violations(directory,output):
    
     result = violations.list_weather_violations(directory)
 
-    new_row = ['STUDENT','AIRPLANE','INSTRUCTOR','TAKEOFF','LANDING','FILED','AREA','REASON']
-    result.insert(0,new_row)
-
-    result =  utils.write_csv(result,output)
-
     count = len(result)
     if count == 0:
         print('No violations found.')
+    elif count == 1:
+        print(f'{count} violation found.')        
     else:
         print(f'{count} violations found.')  
+
+    if output != None:
+        new_row = ['STUDENT','AIRPLANE','INSTRUCTOR','TAKEOFF','LANDING','FILED','AREA','REASON']
+        result.insert(0,new_row)
+        result =  utils.write_csv(result,output)
 
 def execute(args):
     """
